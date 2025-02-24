@@ -1,0 +1,173 @@
+** Prompt 1 : 
+Faire un jeux simple avec les règles basics de tetris 
+fonctionnel stp! en html css js
+
+
+** Pompt 2 : 
+Très bien ça fonctionne, merci. 
+Maintenant j'aimerai qu'on voit la pièce suivante par ce que là 
+on ne l'a voit pas et que les couleurs des pièces et de 
+l'interface soient plus modernes avec belle police etc
+
+
+** Prompt 3 : 
+Alors très jolie merci!! Petit bug, quand je manipule des pièces (ce n'est arrivée que deux fois MAIS) elle se plante à moitié dans la zone de joueur!
+Peux-tu adapter ce super code à ce que je dois faire dans mon tp, qui est d'apprendre à utiliser les pormpts efficient pour l'ia donc pour t'utiliser : 
+Fonctionnalités principales
+Deux grilles
+Une pour le joueur humain, une pour l’IA, côte à côte.
+Contrôles
+Humain
+: flèches du clavier (gauche, droite, bas, haut pour tourner).
+IA
+: joue automatiquement avec une logique simple (ex. : placer les pièces au mieux sans tropréfléchir).
+Tableau des scores
+Points
+:
+50 par ligne.
+Bonus : 100 pour 2 lignes, 200 pour 3 lignes, 300 pour un Tetris (4 lignes).
+Affiche les scores en direct pour les deux joueurs.
+Règles fun (version soft)
+1.
+Cadeau 
+
+
+** Prompt 4 : 
+ALors super sauf que l'ia fait trop de trou et ces pièces ne 
+descendent pas comme un joueur humain
+
+
+** Prompt 5 : 
+l'ai beug et rempli en ligne droite, elle ne tourne pas les pièces et va trop lentement.
+J'aimerai aussi que quand la game est fini avec un game over d'un des deux joueurs,  
+le score des deux joueurs soit afficher et qu'une licorne pop pour 
+annoncer le vainqueur et les scores de chaques joueurs 
+
+
+** Prompt 6 : 
+Alors c'est parfait pour le front mdr!! 
+Par contre pour la logique il y a un problème : 
+- Celui qui perd et celui qui a perdu sa zone de jeu, 
+là c'est celui qui fait n'importe quoi le plus 
+vite et touche la zone du haut XD.
+- L'AI va trop vite 
+
+
+** Prompt 7 : 
+Deux points là l'ia va trop lentement et les pièces de la 
+zone du joueur 1 sur la droite mange certaine pièce
+
+
+** Prompt 8 : 
+pour certaines pièces tourne bizarrement! ça rotate que sur deux axes!
+Je veux que deux fenêtres s'ouvrent quan dla game se termine, une pour 
+chaque joueur, si le joueur à gagner une licorne et une couronne s'affiche, 
+si le joueur à perdu, un pouce vers le bas et une croix rouge s'affiche. 
+On doit aussi voir les scores. Il faudait que l'ia joue un peu plus vite 
+
+
+** Prompt 9 : 
+Toujours les problèmes de pièces, lors de la rotate dans la zone du joueur, 
+elles peuvent se bloquer sur la droite. Et l'ia malgrès la modif va trop 
+doucement, const gameInterval = setInterval(gameLoop, 350);
+Cette ligne si je l'augmente ou la diminue, ça modifie la 
+zone du joueur aussi qui elle est bien réglée.
+
+
+
+** Pompt 10 : 
+ça éfface des cubes des pièces au lieu de les rotates
+
+
+** Prompt 11 : 
+attention, nouvelles fonctionnalitées : 
+Règles fun (version soft) 
+1. Cadeau surprise Quand un joueur complète 2 lignes d’un coup, 
+l’adversaire reçoit une “pièce facile” (ex. : uncarré ou une ligne droite) 
+pour l’aider un peu. 
+2. Pause douceur Tous les 1 000 points, les pièces tombent 20 % plus lentement
+pendant 10 secondes pour lesdeux joueurs – un petit répit pour souffler !  
+3. Échange amical Si un joueur fait un Tetris (4 lignes), 
+il peut échanger une de ses lignes pleines avec une lignevide de 
+l’adversaire – un coup de pouce mutuel !
+
+
+** Prompt 12 : 
+rien ne marche au niveau de ces nouvelles fonctionnalitées
+
+
+** Prompt 13 : 
+Rappelle moi que dois faire les nouvelles fonctionnalités ? 
+j'ai l'impression qu'elles ne marchent pas.
+(Petit message à Kevin --> Ici c'est pour le resituer dans la logique demandée de base, il était perdu xD)
+
+
+** Prompt 14 : 
+Ok, maintenant l'IA perd trop facilement.
+
+
+** Prompt 15 : 
+Avec ce nouveau code l'ia à beugé.
+
+
+** Prompt 16 : 
+Il perd encore trop facilement
+
+
+** Prompt 17 : 
+Attends j'ai mal fait mon prompt, il perd trop facilement à 
+cause sûrement de sa fonction d'evaluation de position
+
+** Prompt 18 : 
+L'Ia joue quasiment tout sur la même colonne est perd en 1minutes, 
+elle n'évalue pas le positionnement sur toute la ligne
+
+
+** Prompt 19 : 
+Beaucoup mieux, il a du mal quand même à faire des lignes pleines sans trous, du coup au bout d'un moment il est bloqué est perd tout le temps. 
+Autre chose, la fonction rotatePiece ne fait plus là rotate à 360 degrés...
+Ce qui fait des rotates de pièces bizarre : 
+    rotatePiece(piece) {
+        // Copie profonde de la pièce pour éviter les références
+        const deepCopy = arr => arr.map(row => [...row]);
+        
+        // Cas spécial pour la pièce carrée (O)
+        if (piece.length === 2 && piece[0].length === 2) {
+            return deepCopy(piece);
+        }
+        
+        // Cas spécial pour la pièce I
+        if (piece.length === 1) {
+            return [[1], [1], [1], [1]];
+        }
+        if (piece[0].length === 1) {
+            return [[1, 1, 1, 1]];
+        }
+        
+        // Création d'une nouvelle matrice pour la rotation
+        const height = piece.length;
+        const width = piece[0].length;
+        const rotated = Array(width).fill().map(() => Array(height).fill(0));
+        
+        // Rotation préservant tous les blocs
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                rotated[x][height - 1 - y] = piece[y][x];
+            }
+        }
+        
+        return rotated;
+    }
+
+
+** Prompt 20 : 
+L'IA n'est pas assez performante, n'a pas compris le principe du jeu,
+C'est à dire ne prend pas en compte le concept du jeu qui est de 
+faire des lignes pleines.
+
+
+** Prompt 21 : 
+D'après tout le code que je viens de te copier-coller, comment tu l'améliorerais ?
+
+
+

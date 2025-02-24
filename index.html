@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tetris VS IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+        
+        .game-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .player-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas {
+            border: 3px solid #4a4e69;
+            border-radius: 8px;
+            background: #16213e;
+        }
+        
+        .score-board {
+            background: #4a4e69;
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 40px;
+        }
+
+        .score-section {
+            text-align: center;
+        }
+
+        .next-piece-container {
+            background: #4a4e69;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #e2e2e2;
+        }
+
+        .score {
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .player-title {
+            color: #0DC2FF;
+            margin-bottom: 10px;
+        }
+
+        .ai-title {
+            color: #FF0D72;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="score-board">
+        <div class="score-section">
+            <h2>Player Score</h2>
+            <div class="score" id="playerScore">0</div>
+        </div>
+        <div class="score-section">
+            <h2>AI Score</h2>
+            <div class="score" id="aiScore">0</div>
+        </div>
+    </div>
+    <div class="game-container">
+        <div class="player-section">
+            <h2 class="player-title">Player</h2>
+            <canvas id="playerCanvas" width="240" height="400"></canvas>
+            <div class="next-piece-container">
+                <h2>Next</h2>
+                <canvas id="playerNextPiece" width="100" height="100"></canvas>
+            </div>
+        </div>
+        <div class="player-section">
+            <h2 class="ai-title">AI</h2>
+            <canvas id="aiCanvas" width="240" height="400"></canvas>
+            <div class="next-piece-container">
+                <h2>Next</h2>
+                <canvas id="aiNextPiece" width="100" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script src="tetris.js"></script>
+</body>
+</html>
