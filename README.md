@@ -1,4 +1,4 @@
-# Projet-Code-AI-Gen
+# Projet-Code-AI-Gen par Marina Estanco
 
 
 --> Consigne :

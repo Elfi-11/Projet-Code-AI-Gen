@@ -1,3 +1,5 @@
+Projet coder avec une IA, Marina Estanco
+
 ** Prompt 1 : 
 Faire un jeux simple avec les règles basics de tetris 
 fonctionnel stp! en html css js
